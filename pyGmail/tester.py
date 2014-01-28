@@ -8,11 +8,13 @@
 # Copyright:   (c) tsilivisn 2014
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
-import pygmail
+from pygmail import pygmail
 
 g = pygmail()
-g.login('nick.tsilivis@gmail.com', 'notorious3')
+g.login('basementproject.gr@gmail.com', 'notorious3')
 
 print g.response
 
-
+g.get_mailboxes()
+for item in g.mailboxes:
+    print item
