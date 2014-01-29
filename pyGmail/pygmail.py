@@ -19,12 +19,14 @@ class pygmail:
         self.M = None
         self.response = None
         self.mailboxes = []
+        self.password = None
 
         self.SMTP_SERVER = 'smtp.gmail.com'
         self.SMTP_PORT = 587
 
     def login(self, username, password):
         self.M = imaplib.IMAP4_SSL(self.IMAP_SERVER, self.IMAP_PORT)
+        self.password = password
         rc, self.response = self.M.login(username, password)
         return rc
 
@@ -83,22 +85,34 @@ class pygmail:
         return response
 
     def send_email(self, sender, to, subject, body,):
+
+        sender = 'nick.tsilivis@gmail.com'
+        to = 'nick.tsilivis@gmail.com'
+        subject = 'Gmail SMTP Test'
+        body = 'blah blah blah'
+
+        "Sends an e-mail to the specified recipient."
+
         body = "" + body + ""
 
         headers = ["From: " + sender,
-           "Subject: " + subject,
-           "To: " + to,
-           "MIME-Version: 1.0",
-           "Content-Type: text/html"]
+                   "Subject: " + subject,
+                   "To: " + to,
+                   "MIME-Version: 1.0",
+                   "Content-Type: text/html"]
 
         headers = "\r\n".join(headers)
 
-        sesion = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+        sesion = smtplib.SMTP('smtp.gmail.com', 587)
 
         sesion.ehlo()
         sesion.starttls()
         sesion.ehlo()
-        self.login(sender, )
+##        self.login(sender, self.password)
+        self.login('nick.tsilivis@gmail.com', 'notorious3')
+
+        sesion.sendmail(sender, to, headers + "\r\n\r\n" + body)
+        sesion.quit()
 
 
 
