@@ -9,6 +9,7 @@
 # Licence:     <your licence>
 #-------------------------------------------------------------------------------
 from pygmail import pygmail
+from time import gmtime, strftime
 
 g = pygmail()
 g.login('nick.tsilivis@gmail.com', 'notorious3')
@@ -30,6 +31,6 @@ print g.response
 
 g.logout()
 
-g.send_email("nick.tsilivis@gmail.com", "p.tsilivis10@gmail.com", "Automatic python email", "This is an automatic email sent from python program")
+g.send_email("nick.tsilivis@gmail.com", "p.tsilivis10@gmail.com", "Automatic python email " + strftime("%Y-%m-%d %H:%M:%S", gmtime()), "This is an automatic email sent from python program")
 
 

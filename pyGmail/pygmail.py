@@ -84,37 +84,26 @@ class pygmail:
         status, response = self.M.fetch(id, '(body[header.fields (subject)])')
         return response
 
-    def send_email(self, sender, to, subject, body,):
-
-        sender = 'nick.tsilivis@gmail.com'
-        to = 'nick.tsilivis@gmail.com'
-        subject = 'Gmail SMTP Test'
-        body = 'blah blah blah'
-
-        "Sends an e-mail to the specified recipient."
+    def send_email(self, sender, recipient, subject, body):
 
         body = "" + body + ""
 
         headers = ["From: " + sender,
                    "Subject: " + subject,
-                   "To: " + to,
+                   "To: " + recipient,
                    "MIME-Version: 1.0",
                    "Content-Type: text/html"]
-
         headers = "\r\n".join(headers)
 
-        sesion = smtplib.SMTP('smtp.gmail.com', 587)
+        session = smtplib.SMTP(self.SMTP_SERVER, self.SMTP_PORT)
 
-        sesion.ehlo()
-        sesion.starttls()
-        sesion.ehlo()
-##        self.login(sender, self.password)
-        self.login('nick.tsilivis@gmail.com', 'notorious3')
+        session.ehlo()
+        session.starttls()
+        session.ehlo
+        session.login(sender, self.password)
 
-        sesion.sendmail(sender, to, headers + "\r\n\r\n" + body)
-        sesion.quit()
-
-
+        session.sendmail(sender, recipient, headers + "\r\n\r\n" + body)
+        session.quit()
 
 
 
